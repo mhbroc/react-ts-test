@@ -1,9 +1,10 @@
-import React, { Component} from "react";
-import {hot} from "react-hot-loader";
+import React = require('react');
+// import hot = require('react-hot-loader');
+import {hot} from 'react-hot-loader';
 import "./App.css";
 import Board from "./components/Board";
 
-class App extends Component{
+class App extends React.Component{
     render(){
         return(
             <Board />

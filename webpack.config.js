@@ -2,10 +2,15 @@ const path = require("path");
 const webpack = require("webpack");
 
 module.exports = {
-	entry: "./src/index.js",
+	entry: "./src/index.tsx",
 	mode: "development",
 	module: {
 		rules: [
+			{
+                test: /\.ts(x?)$/,
+                exclude: /node_modules/,
+                use: ["ts-loader"]
+			},
 			{
 				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
@@ -15,10 +20,15 @@ module.exports = {
 			{
 				test: /\.css$/,
 				use: ["style-loader", "css-loader"]
-			}
+			},
+			{
+                enforce: "pre",
+                test: /\.js$/,
+                loader: "source-map-loader"
+            }
 		]
 	},
-	resolve: { extensions: ["*", ".js", ".jsx"] },
+	resolve: { extensions: ["*", ".js", ".jsx", ".tsx", ".ts"] },
 	output: {
 		path: path.resolve(__dirname, "dist/"),
 		publicPath: "/dist/",
@@ -31,5 +41,9 @@ module.exports = {
 		hotOnly: true
 	},
 	devtool: 'source-map',
+	// externals: {
+    //     "react": "react",
+    //     "react-dom": "reactDOM"
+    // },
 	plugins: [new webpack.HotModuleReplacementPlugin()]
 };

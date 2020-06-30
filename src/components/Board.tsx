@@ -1,8 +1,23 @@
-import React, { Component } from "react";
+import React = require("react");
+// const { Component } = require("react");
+// const React = require("react");
 import "./Board.css";
 
-class Square extends Component
+interface SquareProps
 {
+    onClick: () => void;
+    value: boolean;
+}
+
+interface BoardState
+{
+    map: boolean[][];
+    status: boolean;
+}
+
+class Square extends React.Component<SquareProps>
+{
+    
     getText(val)
     {
         if (val !== null)
@@ -19,7 +34,7 @@ class Square extends Component
     }
 }
 
-export default class Board extends Component
+export default class Board extends React.Component<{}, BoardState>
 {
     constructor(props)
     {
@@ -37,7 +52,7 @@ export default class Board extends Component
     {
         let m = this.state.map;
 
-        const check = (prev, c, y, x, ydir, xdir) => {
+        const check = (prev: boolean, c: number, y: number, x: number, ydir: number, xdir: number): boolean => {
             if (c == m.length)
                 return true;
 
@@ -88,3 +103,4 @@ export default class Board extends Component
         );
     }
 }
+// module.exports = Board;
