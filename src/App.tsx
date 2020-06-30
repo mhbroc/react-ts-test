@@ -1,5 +1,4 @@
 import React = require('react');
-// import hot = require('react-hot-loader');
 import {hot} from 'react-hot-loader';
 import "./App.css";
 import Board from "./components/Board";

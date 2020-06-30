@@ -1,6 +1,4 @@
 import React = require("react");
-// const { Component } = require("react");
-// const React = require("react");
 import "./Board.css";
 
 interface SquareProps
