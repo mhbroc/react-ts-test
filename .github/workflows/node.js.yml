@@ -16,7 +16,7 @@ jobs:
       with:
         node-version: 12.x
     - run: npm ci
-    - run: npx webpack
+    - run: npm run build
     
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
